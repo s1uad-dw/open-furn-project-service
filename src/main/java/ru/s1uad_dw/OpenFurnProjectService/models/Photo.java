@@ -19,7 +19,13 @@ public class Photo {
     @ManyToOne
     private Project project;
     private int sequenceNumber;
-
     @Lob
-    private byte[] file;
+    @Basic(fetch = FetchType.EAGER)
+    private String file;
+
+    public Photo(Project project, int sequenceNumber, String file){
+        this.project = project;
+        this.sequenceNumber = sequenceNumber;
+        this.file = file;
+    }
 }
